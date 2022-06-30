@@ -1,14 +1,15 @@
 <script>
-    export default {
-        
-    }
+import CardAPI from '../components/my-companents/CardAPI.vue';
+export default {
+    components: { CardAPI }
+}
 </script>
 
 
 <template>
-    <div class="fondo">
-<h1>Home</h1>
-    </div>
+  <main class="fondo">
+    <CardAPI/>
+  </main>
 </template>
 
 
