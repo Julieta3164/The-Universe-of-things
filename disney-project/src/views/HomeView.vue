@@ -1,9 +1,12 @@
-<script setup>
-import TheWelcome from '@/components/TheWelcome.vue'
+<script>
+import CardAPI from '../components/my-companents/CardAPI.vue';
+export default {
+    components: { CardAPI }
+}
 </script>
 
 <template>
   <main>
-    <TheWelcome />
+    <CardAPI/>
   </main>
 </template>
