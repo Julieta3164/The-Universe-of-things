@@ -1,5 +1,4 @@
 <script>
-import axios from 'axios'
 
 export default {
     data() {
@@ -20,22 +19,6 @@ export default {
     },
     mounted() {
         console.log('Hola Mounted')
-        // this.getAPI();
-    },
-    methods: {
-        // getAPI(){
-        //     console.log("Código de GetToDo")
-        //     axios
-        //         .get('https://api.disneyapi.dev/characters/')
-        //             .then(response => {
-        //                 console.log(response))
-        //                 let characters = response.data.data
-        //                 console.log(characters)
-        //                 return characters
-        //             })
-        //             .catch( e => console.log("hola " + e))
-        //         }
-        // }
     },
 }
 </script>
