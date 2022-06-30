@@ -1,12 +1,14 @@
 <script>
 import Carrusel from '@/components/header/Carrusel.vue'
 import Nav from '@/components/header/Nav.vue'
+import ImagenHome from '@/components/ImageHome.vue'
 import Footer from '@/components/Footer.vue'
     export default {
         name:'app',
         components:{
             Carrusel,
             Nav,
+            ImageHome,
             Footer
         }
         
@@ -17,9 +19,9 @@ import Footer from '@/components/Footer.vue'
    <div id="app">
     <Carrusel />
     <Nav/>
+    <ImageHome/>
     <Footer/>
 </div>
-
 
 </template>
 
@@ -28,10 +30,3 @@ import Footer from '@/components/Footer.vue'
 @import '@/assets/base.css';
 </style>
 
-
-
-
-
-<style lang="scss" scoped>
-@import '@/assets/base.css';
-</style>

@@ -1,17 +1,23 @@
-<script setup>
-
+<script>
+    export default {
+        
+    }
 </script>
 
+
 <template>
-<h1>HOME</h1>
-<div class="card" style="width: 18rem;">
-  <img src="..." class="card-img-top" alt="...">
-  <div class="card-body">
-    <h5 class="card-title">Card title</h5>
-    <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-    <a href="#" class="btn btn-primary">Go somewhere</a>
-  </div>
-</div>
+    <div class="fondo">
+<h1>Home</h1>
+    </div>
 </template>
 
+
+
+<style lang="scss" scoped>
+.fondo{
+  margin-top: 1%;
+    width: 100%;
+    background: #87cefa;
+}
+</style>
 
