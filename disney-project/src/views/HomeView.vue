@@ -16,9 +16,11 @@ export default {
 
 <style lang="scss" scoped>
 .fondo{
+  display: flex;
+  flex-wrap:wrap ;
   margin-top: 1%;
-    width: 100%;
-    background: #87cefa;
-}
+  background: #87cefa;
+  justify-content: center;
+  }
 </style>
 
