@@ -7,7 +7,9 @@ export default {
         }
     },
     async created() {
-        let response = await fetch('https://api.disneyapi.dev/characters/')
+        let parameters = this.$route.query;
+        let myPage = parameters.page;
+        let response = await fetch('https://api.disneyapi.dev/characters?page='+myPage)
         if (response.ok) {
             const datas = await response.json()
             this.characters = datas.data
@@ -28,13 +30,17 @@ export default {
                 v-for="character in characters"
                 :key="character.id"
                 class="col-6 card m-3"
-                style="width: 14rem">
+                style="width: 18rem">
                 <img :src="character.imageUrl" class="card-img-top" alt="..." />
                 <div class="card-body">
                     
                     <h3 class="card-text">{{ character.name }}</h3>
                 </div>
             </div>
+            <a href="?page=11" >11 - </a>
+            <a href="?page=12" >12 - </a>
+            <a href="?page=13" >13 - </a>
+            <a href="?page=14" >14 - </a>
 </template>
 
 <style lang="scss" scoped>
