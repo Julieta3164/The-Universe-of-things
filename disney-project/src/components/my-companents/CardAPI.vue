@@ -22,6 +22,11 @@ export default {
     mounted() {
         console.log('Hola Mounted')
     },
+    methods:{
+        like  (event) {
+            console.log(event); 
+        }
+    }
 }
 </script>
 
@@ -29,12 +34,14 @@ export default {
              <div
                 v-for="character in characters"
                 :key="character.id"
+                :id= "'card' + character.name"
                 class="col-6 card m-3"
                 style="width: 18rem">
                 <img :src="character.imageUrl" class="card-img-top" alt="..." />
                 <div class="card-body">
                     
                     <h3 class="card-text">{{ character.name }}</h3>
+                    <span name="tarjetaTest" v-on:click="this.like('hhh')">like</span>
                 </div>
             </div>
             <a href="?page=11" >11 - </a>
