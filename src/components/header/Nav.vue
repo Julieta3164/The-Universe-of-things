@@ -2,7 +2,7 @@
     <div>
     <nav>
         <RouterLink to="/">Home</RouterLink>
-        <RouterLink to="/about">Favorite</RouterLink>
+        <RouterLink to="/about" id="btnFavorite">Favorite</RouterLink>
     </nav>
 <RouterView />
     </div>
