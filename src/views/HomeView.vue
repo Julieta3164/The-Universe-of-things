@@ -1,5 +1,5 @@
 <script>
-import CardAPI from '../components/my-companents/CardAPI.vue';
+import CardAPI from '@/components/my-companents/CardAPI.vue';
 export default {
     components: { CardAPI }
 }

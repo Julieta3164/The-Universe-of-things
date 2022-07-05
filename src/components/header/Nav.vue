@@ -1,18 +1,16 @@
+<script>
+
+</script>
+
 <template>
     <div>
     <nav>
-        <RouterLink to="/">Home</RouterLink>
-        <RouterLink to="/about" id="btnFavorite">Favorite</RouterLink>
+        <RouterLink to="/">Home  <i class="bi bi-house-fill"></i> </RouterLink>
+        <RouterLink to="/about" id="btnFavorite">Favorite <i class="bi bi-heart-fill"></i></RouterLink>
     </nav>
 <RouterView />
     </div>
 </template>
-
-<script>
-    export default {
-        
-    }
-</script>
 
 <style lang="scss" scoped>
 
