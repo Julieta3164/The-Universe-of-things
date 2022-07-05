@@ -4,25 +4,54 @@ export default {
     data() {
         return {
             characters: [],
+            pages: [],
+            myPage:1
         }
     },
     async created() {
-        let parameters = this.$route.query;
-        let myPage = parameters.page;
-        let response = await fetch('https://api.disneyapi.dev/characters?page='+myPage)
-        if (response.ok) {
-            const datas = await response.json()
-            this.characters = datas.data
-            console.log(datas)
-        } else {
-            console.log('error HTTP', response.status)
-        }
+        this.clickPage(this.myPage)        
         console.log('Hola created')
     },
     mounted() {
-        console.log('Hola Mounted')
+        console.log('Hola Mounted');
     },
     methods:{
+        async clickPage(page){
+            this.myPage = page.number
+            let response = await fetch('https://api.disneyapi.dev/characters?page='+this.myPage)
+            if (response.ok) {
+                const datas = await response.json()
+                this.characters = datas.data
+                /*let totalPages = datas.totalPages;
+                
+                let startPages = parseInt(this.myPage)  - 5;
+                if(startPages < 1 ){
+                    startPages = 1;
+                }
+
+                let endPages = parseInt(this.myPage) + 5;
+                if(endPages > totalPages){
+                    endPages = totalPages
+                }*/
+                
+                this.pages=[]
+
+                //Flecha atras
+                this.pages.push({"id":0, "number":parseInt(page.number)  - 1,"text":"<<"})
+                                
+                //Numeros
+                for(let i=1; i<11; i++){
+                    this.pages.push({"id":i, "number":i,"text":i})
+                }
+                //Flecha atras
+                 this.pages.push({"id":12, "number":parseInt(page.number)  + 1,"text":">>"})
+
+                
+
+            } else {
+                console.log('error HTTP', response.status)
+            }
+        },
         like  (character) {
             let idDivSelected = "card-" + character._id;
             let itemSelected = document.querySelector("#" + idDivSelected);
@@ -65,6 +94,11 @@ export default {
 </script>
 
 <template>
+                        <div v-for="page in pages"
+            :key="page.id">
+            <button v-on:click="this.clickPage(page)">{{page.text}}</button>
+            </div>
+
              <div
                 v-for="character in characters"
                 :key="character._id"
@@ -77,10 +111,9 @@ export default {
                     <h3 class="card-text">{{ character.name }}</h3>
                 </div>
             </div>
-            <a href="?page=11" >11 - </a>
-            <a href="?page=12" >12 - </a>
-            <a href="?page=13" >13 - </a>
-            <a href="?page=14" >14 - </a>
+
+
+            
 </template>
 
 <style lang="scss" scoped>
