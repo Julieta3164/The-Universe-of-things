@@ -71,7 +71,7 @@ export default {
                 :id= "'card-' + character._id"
                 class="card col-6 card m-3"
                 style="width: 18rem">
-                <button name="tarjetaTest" v-on:click="this.like(character)">like</button>
+                <div class="heart" name="tarjetaTest" v-on:click="this.like(character)"></div>
                 <img :src="character.imageUrl" class="card-img-top" alt="..." />
                 <div class="card-body">
                     <h3 class="card-text">{{ character.name }}</h3>
@@ -119,5 +119,45 @@ img{
     display: none;
   }
 }
+
+
+.heart:before,
+.heart:after {
+    background: #e74c3c;
+    border-radius: 85px 60px 0 0;
+    content: "";
+    height: 29px;
+    left: 17px;
+    position: absolute;
+    top: 6px;
+    margin-left: 240px;
+    width: 16px;
+    -moz-border-radius: 50px 50px 0 0;
+    border-radius: 85px 60px 0 0;
+    -webkit-transform: rotate(-45deg);
+    -moz-transform: rotate(-45deg);
+    -ms-transform: rotate(-45deg);
+    -o-transform: rotate(-45deg);
+    transform: rotate(-45deg);
+    -webkit-transform-origin: 0 100%;
+    -moz-transform-origin: 0 100%;
+    -ms-transform-origin: 0 100%;
+    -o-transform-origin: 0 100%;
+    transform-origin: 0 100%;
+}
+.heart:after {
+    left: 1px;
+    -webkit-transform: rotate(45deg);
+    border-radius: 45px 60px 0 0;
+    -moz-transform: rotate(45deg);
+    -ms-transform: rotate(45deg);
+    -o-transform: rotate(45deg);
+    transform: rotate(45deg);
+    -webkit-transform-origin: 100% 100%;
+    -moz-transform-origin: 100% 100%;
+    -ms-transform-origin: 100% 100%;
+    -o-transform-origin: 100% 100%;
+    transform-origin: 100% 100%;
+    }
 
 </style>
