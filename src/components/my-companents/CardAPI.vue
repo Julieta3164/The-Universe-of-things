@@ -1,9 +1,13 @@
 <script>
+import { mapActions, mapState, mapWritableState } from 'pinia';
+import { userFavoriteStore } from '../../stores/add-favorite';
+
 
 export default {
     data() {
         return {
             characters: [],
+<<<<<<< HEAD
             pages: [],
             myPage:1
         }
@@ -14,8 +18,42 @@ export default {
     },
     mounted() {
         console.log('Hola Mounted');
+=======
+            isFavorite: true,
+            updateHome: [],
+        }
     },
+    async created() {
+        let parameters = this.$route.query;
+        let myPage = parameters.page;
+        let response = await fetch('https://api.disneyapi.dev/characters?page='+myPage)
+        if (response.ok) {
+            const datas = await response.json()
+            this.characters = datas.data
+            //console.log(this.characters)
+        } else {
+            console.log('error HTTP', response.status)
+        }
+         console.log('Hola created')
+       
+    },
+    updated() {
+            this.favorite.forEach(chosen => {
+            this.characters = this.characters.filter(character => character._id !== chosen._id)
+            })
+            //console.log(this.characters)
+>>>>>>> esther
+    },
+
+
+    computed: {
+        ...mapWritableState(userFavoriteStore, ['favorite']),
+    },
+
+    
+    
     methods:{
+<<<<<<< HEAD
         async clickPage(page){
             this.myPage = page.number
             let response = await fetch('https://api.disneyapi.dev/characters?page='+this.myPage)
@@ -68,6 +106,10 @@ export default {
                 console.log('error HTTP', response.status)
             }
         },
+=======
+         ...mapActions(userFavoriteStore, ['addFavorite']),
+        
+>>>>>>> esther
         like  (character) {
             let idDivSelected = "card-" + character._id;
             let itemSelected = document.querySelector("#" + idDivSelected);
@@ -78,8 +120,9 @@ export default {
 
             btnFavorites.animate([{ transform: "translateZ(700px)", offset: 0.5 }], {
                 duration: animationDuration,
-                easing: "ease-in-out"
+                easing: "ease-in-out",
             });
+           
 
             const animation = itemSelected.animate(
                 [
@@ -93,8 +136,12 @@ export default {
             animation.onfinish = () => {
                 itemSelected.classList.add("card_hidden");
                 //TODO aqui agreagar a store
+                this.addFavorite(character);
                 console.log("final de la animacion");
             };
+
+            
+        
         },
         getDistance(elt1, elt2) {
             if (!(elt1 instanceof Element && elt2 instanceof Element))
@@ -104,8 +151,9 @@ export default {
             const elt2Bbox = elt2.getBoundingClientRect();
 
             return { x: elt2Bbox.x - elt1Bbox.x, y: elt2Bbox.y - elt1Bbox.y };
-            }
-        }
+        },  
+    }
+    
 }
 </script>
 
