@@ -6,7 +6,7 @@
     <div>
     <nav>
         <RouterLink to="/">Home  <i class="bi bi-house-fill"></i> </RouterLink>
-        <RouterLink to="/about" id="btnFavorite">Favorite <i class="bi bi-heart-fill"></i></RouterLink>
+        <RouterLink to="/about" id="btnFavorite">Like  <i class="bi bi-heart-fill"></i></RouterLink>
     </nav>
 <RouterView />
     </div>
