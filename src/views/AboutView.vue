@@ -1,11 +1,3 @@
-<<<<<<< HEAD
-<template>
-<h1>ABOUT</h1>
-
-</template>
-
-
-=======
 <script>
 import { mapWritableState } from 'pinia'
 import { userFavoriteStore } from '../stores/add-favorite'
@@ -50,7 +42,7 @@ img{
     margin-left: 15%;
 }
 .name {
-    background-color: 006e99;
+    background-color: #006e99;
 }
 
 .card {
@@ -69,4 +61,3 @@ img{
   }
 }
 </style>
->>>>>>> a412226740b21aeab12ff88980c4e9f8ad4fdb07
