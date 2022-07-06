@@ -16,7 +16,7 @@ export default {
         style="width: 18rem"
     >
         <button name="tarjetaTest" v-on:click="this.like(character)">
-            like
+        
         </button>
         <img :src="character.imageUrl" class="card-img-top" alt="..." />
         <div class="card-body">
@@ -59,5 +59,9 @@ img{
   &_hidden {
     display: none;
   }
+}
+
+button{
+    border: none;
 }
 </style>
