@@ -1,40 +1,28 @@
 <script>
 import { mapActions, mapState, mapWritableState } from 'pinia';
 import { userFavoriteStore } from '../../stores/add-favorite';
+import APIDisney from '@/api-call/APIDisney'
 
 
 export default {
     data() {
         return {
             characters: [],
-<<<<<<< HEAD
             pages: [],
             myPage:1
         }
     },
+ 
+  
     async created() {
-        this.clickPage({"id":"", "number":this.myPage,"text":""})        
-        console.log('Hola created')
-    },
-    mounted() {
-        console.log('Hola Mounted');
-=======
-            isFavorite: true,
-            updateHome: [],
-        }
-    },
-    async created() {
+        const dataAPI = new APIDisney()
+        const data = await dataAPI.getAPI()
+        this.characters = data
+        
         let parameters = this.$route.query;
         let myPage = parameters.page;
-        let response = await fetch('https://api.disneyapi.dev/characters?page='+myPage)
-        if (response.ok) {
-            const datas = await response.json()
-            this.characters = datas.data
-            //console.log(this.characters)
-        } else {
-            console.log('error HTTP', response.status)
-        }
-         console.log('Hola created')
+        this.clickPage({"id":"", "number":this.myPage,"text":""})        
+        console.log('Hola created')
        
     },
     updated() {
@@ -42,7 +30,6 @@ export default {
             this.characters = this.characters.filter(character => character._id !== chosen._id)
             })
             //console.log(this.characters)
->>>>>>> esther
     },
 
 
@@ -53,7 +40,7 @@ export default {
     
     
     methods:{
-<<<<<<< HEAD
+        ...mapActions(userFavoriteStore, ['addFavorite']),
         async clickPage(page){
             this.myPage = page.number
             let response = await fetch('https://api.disneyapi.dev/characters?page='+this.myPage)
@@ -106,10 +93,8 @@ export default {
                 console.log('error HTTP', response.status)
             }
         },
-=======
-         ...mapActions(userFavoriteStore, ['addFavorite']),
+         
         
->>>>>>> esther
         like  (character) {
             let idDivSelected = "card-" + character._id;
             let itemSelected = document.querySelector("#" + idDivSelected);
