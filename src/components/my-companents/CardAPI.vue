@@ -9,7 +9,7 @@ export default {
         }
     },
     async created() {
-        this.clickPage(this.myPage)        
+        this.clickPage({"id":"", "number":this.myPage,"text":""})        
         console.log('Hola created')
     },
     mounted() {
@@ -22,29 +22,45 @@ export default {
             if (response.ok) {
                 const datas = await response.json()
                 this.characters = datas.data
-                /*let totalPages = datas.totalPages;
+                let totalPages = datas.totalPages
                 
                 let startPages = parseInt(this.myPage)  - 5;
                 if(startPages < 1 ){
-                    startPages = 1;
+                    startPages=1
                 }
-
-                let endPages = parseInt(this.myPage) + 5;
-                if(endPages > totalPages){
-                    endPages = totalPages
-                }*/
+                console.log("startPages"+startPages);
                 
                 this.pages=[]
 
                 //Flecha atras
-                this.pages.push({"id":0, "number":parseInt(page.number)  - 1,"text":"<<"})
+                let previusPage = parseInt(page.number)  - 1;
+                if(previusPage>1){
+                    this.pages.push({"id":0, "number":previusPage,"text":"<<", "class":""})
+                }
+                console.log("previusPage"+previusPage);
                                 
                 //Numeros
-                for(let i=1; i<11; i++){
-                    this.pages.push({"id":i, "number":i,"text":i})
+                for(let i=0; i<10; i++){
+                    let currentPage = startPages + i
+                    let cssClass = "";
+
+                    if(currentPage == this.myPage){
+                        cssClass="currentPage"
+                    }
+
+                    if(currentPage < totalPages && currentPage > 0 ) {
+                         this.pages.push({"id":i, "number":currentPage,"text":currentPage, "class":cssClass})
+                         console.log("currentPage"+currentPage);
+                    }
+                   
                 }
-                //Flecha atras
-                 this.pages.push({"id":12, "number":parseInt(page.number)  + 1,"text":">>"})
+                let nextPage = parseInt(page.number)  + 1;
+                if(nextPage< totalPages){
+                    //Flecha adelante
+                    this.pages.push({"id":12, "number":nextPage,"text":">>","class":""})
+                }
+                console.log("nextPage"+nextPage);
+                
 
                 
 
@@ -94,9 +110,9 @@ export default {
 </script>
 
 <template>
-                        <div v-for="page in pages"
+            <div v-for="page in pages"
             :key="page.id">
-            <button v-on:click="this.clickPage(page)">{{page.text}}</button>
+                <button v-on:click="this.clickPage(page)" :class="page.class">{{page.text}}</button>
             </div>
 
              <div
@@ -192,5 +208,9 @@ img{
     -o-transform-origin: 100% 100%;
     transform-origin: 100% 100%;
     }
+
+.currentPage{
+    font-size: 20px;
+}
 
 </style>
