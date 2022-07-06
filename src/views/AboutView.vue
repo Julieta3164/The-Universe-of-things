@@ -8,6 +8,7 @@ export default {
 }
 </script>
 <template>
+<main class="fondo">
     <div
         v-for="character in favorite"
         :key="character._id"
@@ -23,9 +24,17 @@ export default {
             <h3 class="card-text">{{ character.name }}</h3>
         </div>
     </div>
+    </main>
 </template>
 
 <style lang="scss" scoped>
+.fondo{
+display: flex;
+  flex-wrap:wrap ;
+  margin-top: 1%;
+  background: #87cefa;
+  justify-content: center;
+}
     .card-body{
     h3{
         font-size: 25px;
