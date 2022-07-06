@@ -1,9 +1,14 @@
 <script>
+import { mapActions, mapState, mapWritableState } from 'pinia';
+import { userFavoriteStore } from '../../stores/add-favorite';
+
 
 export default {
     data() {
         return {
             characters: [],
+            isFavorite: true,
+            updateHome: [],
         }
     },
     async created() {
@@ -13,16 +18,44 @@ export default {
         if (response.ok) {
             const datas = await response.json()
             this.characters = datas.data
-            console.log(datas)
+            //console.log(this.characters)
         } else {
             console.log('error HTTP', response.status)
         }
-        console.log('Hola created')
+         console.log('Hola created')
+       
     },
-    mounted() {
-        console.log('Hola Mounted')
+    updated() {
+        //this.characters.forEach( character => {
+           // console.log(!this.favorite.includes(character._id))
+            this.favorite.forEach(chosen => {
+            this.characters = this.characters.filter(character => character._id !== chosen._id)
+            })
+            console.log(this.characters)
+       // })
     },
+
+
+    computed: {
+        ...mapState(userFavoriteStore, ['favorite']),
+        // updateFilter(){
+
+        //     if(this.favorite.length > 0){
+        //          let updateHome = this.characters.filter(character => this.favorite.find(chosen => chosen.id != character.id) );
+        //         this.characters = updateHome;
+        //       //  this.isFavorite = false;
+        //      }
+             
+        //      console.log(this.updateHome)
+
+        // }
+    },
+
+    
+    
     methods:{
+         ...mapActions(userFavoriteStore, ['addFavorite']),
+        
         like  (character) {
             let idDivSelected = "card-" + character._id;
             let itemSelected = document.querySelector("#" + idDivSelected);
@@ -33,8 +66,9 @@ export default {
 
             btnFavorites.animate([{ transform: "translateZ(700px)", offset: 0.5 }], {
                 duration: animationDuration,
-                easing: "ease-in-out"
+                easing: "ease-in-out",
             });
+           
 
             const animation = itemSelected.animate(
                 [
@@ -48,8 +82,12 @@ export default {
             animation.onfinish = () => {
                 itemSelected.classList.add("card_hidden");
                 //TODO aqui agreagar a store
+                this.addFavorite(character);
                 console.log("final de la animacion");
             };
+
+            
+        
         },
         getDistance(elt1, elt2) {
             if (!(elt1 instanceof Element && elt2 instanceof Element))
@@ -59,8 +97,18 @@ export default {
             const elt2Bbox = elt2.getBoundingClientRect();
 
             return { x: elt2Bbox.x - elt1Bbox.x, y: elt2Bbox.y - elt1Bbox.y };
-            }
-        }
+        },
+        // filterFavorite(){
+        //     let pagFavorites = this.favorite || [];
+        //     console.log(pagFavorite)
+        //     this.favorite.forEach(pagFavorite => {
+        //     let updateHome = this.characters.filter(character => character.id =! this.favorite.id );
+        //     console.log(updateHome)
+        //     });
+        // }
+        
+    }
+    
 }
 </script>
 
