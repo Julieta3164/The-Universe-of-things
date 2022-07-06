@@ -26,29 +26,15 @@ export default {
        
     },
     updated() {
-        //this.characters.forEach( character => {
-           // console.log(!this.favorite.includes(character._id))
             this.favorite.forEach(chosen => {
             this.characters = this.characters.filter(character => character._id !== chosen._id)
             })
-            console.log(this.characters)
-       // })
+            //console.log(this.characters)
     },
 
 
     computed: {
-        ...mapState(userFavoriteStore, ['favorite']),
-        // updateFilter(){
-
-        //     if(this.favorite.length > 0){
-        //          let updateHome = this.characters.filter(character => this.favorite.find(chosen => chosen.id != character.id) );
-        //         this.characters = updateHome;
-        //       //  this.isFavorite = false;
-        //      }
-             
-        //      console.log(this.updateHome)
-
-        // }
+        ...mapWritableState(userFavoriteStore, ['favorite']),
     },
 
     
@@ -97,16 +83,7 @@ export default {
             const elt2Bbox = elt2.getBoundingClientRect();
 
             return { x: elt2Bbox.x - elt1Bbox.x, y: elt2Bbox.y - elt1Bbox.y };
-        },
-        // filterFavorite(){
-        //     let pagFavorites = this.favorite || [];
-        //     console.log(pagFavorite)
-        //     this.favorite.forEach(pagFavorite => {
-        //     let updateHome = this.characters.filter(character => character.id =! this.favorite.id );
-        //     console.log(updateHome)
-        //     });
-        // }
-        
+        },  
     }
     
 }
