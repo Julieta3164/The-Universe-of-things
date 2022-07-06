@@ -1,4 +1,8 @@
 <script>
+import { mapActions, mapState, mapWritableState } from 'pinia';
+import { userFavoriteStore } from '../../stores/add-favorite';
+import APIDisney from '@/api-call/APIDisney'
+
 
 export default {
     data() {
@@ -8,14 +12,35 @@ export default {
             myPage:1
         }
     },
+ 
+  
     async created() {
+        const dataAPI = new APIDisney()
+        const data = await dataAPI.getAPI()
+        this.characters = data
+        
+        let parameters = this.$route.query;
+        let myPage = parameters.page;
         this.clickPage({"id":"", "number":this.myPage,"text":""})        
         console.log('Hola created')
+       
     },
-    mounted() {
-        console.log('Hola Mounted');
+    updated() {
+            this.favorite.forEach(chosen => {
+            this.characters = this.characters.filter(character => character._id !== chosen._id)
+            })
+            //console.log(this.characters)
     },
+
+
+    computed: {
+        ...mapWritableState(userFavoriteStore, ['favorite']),
+    },
+
+    
+    
     methods:{
+        ...mapActions(userFavoriteStore, ['addFavorite']),
         async clickPage(page){
             this.myPage = page.number
             let response = await fetch('https://api.disneyapi.dev/characters?page='+this.myPage)
@@ -65,6 +90,8 @@ export default {
                 console.log('error HTTP', response.status)
             }
         },
+         
+        
         like  (character) {
             let idDivSelected = "card-" + character._id;
             let itemSelected = document.querySelector("#" + idDivSelected);
@@ -75,8 +102,9 @@ export default {
 
             btnFavorites.animate([{ transform: "translateZ(700px)", offset: 0.5 }], {
                 duration: animationDuration,
-                easing: "ease-in-out"
+                easing: "ease-in-out",
             });
+           
 
             const animation = itemSelected.animate(
                 [
@@ -90,8 +118,12 @@ export default {
             animation.onfinish = () => {
                 itemSelected.classList.add("card_hidden");
                 //TODO aqui agreagar a store
+                this.addFavorite(character);
                 console.log("final de la animacion");
             };
+
+            
+        
         },
         getDistance(elt1, elt2) {
             if (!(elt1 instanceof Element && elt2 instanceof Element))
@@ -101,8 +133,9 @@ export default {
             const elt2Bbox = elt2.getBoundingClientRect();
 
             return { x: elt2Bbox.x - elt1Bbox.x, y: elt2Bbox.y - elt1Bbox.y };
-            }
-        }
+        },  
+    }
+    
 }
 </script>
 
