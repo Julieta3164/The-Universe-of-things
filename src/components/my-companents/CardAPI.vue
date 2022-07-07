@@ -85,9 +85,6 @@ export default {
                     this.pages.push({"id":12, "number":nextPage,"text":">>","class":""})
                 }
                 console.log("nextPage"+nextPage);
-                
-
-                
 
             } else {
                 console.log('error HTTP', response.status)
@@ -143,10 +140,12 @@ export default {
 </script>
 
 <template>
-            <div v-for="page in pages"
-            :key="page.id">
-                <button v-on:click="this.clickPage(page)" :class="page.class">{{page.text}}</button>
-            </div>
+            <div class="pag">
+                <button v-for="page in pages" 
+                :key="page.id"
+                v-on:click="this.clickPage(page)" 
+                :class="page.class">{{page.text}}</button>
+            </div>            
 
              <div
                 v-for="character in characters"
@@ -242,8 +241,24 @@ img{
     transform-origin: 100% 100%;
     }
 
-.currentPage{
-    font-size: 20px;
+
+
+.pag{
+        display: flex;
+    width: 100%;
+    justify-content:center;
+    
+    .currentPage{
+        background:#e74c3c;
+        padding: 1%;
+}
+    button{
+         width:40px;
+        margin: 1%;
+        border: none; 
+        background: #006E99;
+        color:white;
+}
 }
 
 </style>

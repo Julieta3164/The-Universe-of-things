@@ -8,6 +8,7 @@ export default {
 }
 </script>
 <template>
+<main class="fondo">
     <div
         v-for="character in favorite"
         :key="character._id"
@@ -16,16 +17,24 @@ export default {
         style="width: 18rem"
     >
         <button name="tarjetaTest" v-on:click="this.like(character)">
-            like
+        
         </button>
         <img :src="character.imageUrl" class="card-img-top" alt="..." />
         <div class="card-body">
             <h3 class="card-text">{{ character.name }}</h3>
         </div>
     </div>
+    </main>
 </template>
 
 <style lang="scss" scoped>
+.fondo{
+display: flex;
+  flex-wrap:wrap ;
+  margin-top: 1%;
+  background: #87cefa;
+  justify-content: center;
+}
     .card-body{
     h3{
         font-size: 25px;
@@ -59,5 +68,9 @@ img{
   &_hidden {
     display: none;
   }
+}
+
+button{
+    border: none;
 }
 </style>
