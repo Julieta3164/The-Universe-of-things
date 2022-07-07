@@ -13,16 +13,17 @@ export default {
         v-for="character in favorite"
         :key="character._id"
         :id="'card-' + character._id"
-        class="card col-6 card m-3"
-        style="width: 18rem"
-    >
-        <button name="tarjetaTest" v-on:click="this.like(character)">
-        
-        </button>
-        <img :src="character.imageUrl" class="card-img-top" alt="..." />
+        class="card col-6 card m-3 central"
+        style="width: 18rem">
+        <div class="img-card">
+            <img :src="character.imageUrl" class="card-img-top" alt="..." />
+        </div>
+           
         <div class="card-body">
             <h3 class="card-text">{{ character.name }}</h3>
         </div>
+        
+        <div class="stars">HOLA</div> 
     </div>
     </main>
 </template>
@@ -35,21 +36,31 @@ display: flex;
   background: #87cefa;
   justify-content: center;
 }
-    .card-body{
-    h3{
-        font-size: 25px;
-        text-align: center;
-        color: white;
-    }
-    background-color: #006E99;
-}
+    .central{
+    text-align: center;
+        width: 100%;
+        .img-card{
+            img{
+                width: 50%;
+                height: 100%;
+            }
+            margin: 5%;
+            width: 100%;
+            height: 60%;
+        }
+        .card-body{
+            background: #006e99;
+            color: white;
+            width: 100%;
+            height: 20%;
+        }
+        .stars{
+            background: #e74c3c;
+            width: 100%;
+            height: 20%;
+        }
+   }
 
-img{
-    width: 70%;
-    height: 70%;
-    margin-top: 10%;
-    margin-left: 15%;
-}
 .name {
     background-color: #006e99;
 }

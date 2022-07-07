@@ -154,7 +154,8 @@ export default {
                 class="card col-6 card m-3"
                 style="width: 18rem">
                 <div class="heart" name="tarjetaTest" v-on:click="this.like(character)"></div>
-                <img :src="character.imageUrl" class="card-img-top" alt="..." />
+               <div></div>
+               <img :src="character.imageUrl" class="card-img-top" alt="..." />
                 <div class="card-body">
                     <h3 class="card-text">{{ character.name }}</h3>
                 </div>
@@ -240,8 +241,6 @@ img{
     -o-transform-origin: 100% 100%;
     transform-origin: 100% 100%;
     }
-
-
 
 .pag{
         display: flex;
