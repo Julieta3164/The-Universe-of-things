@@ -15,6 +15,11 @@ export default {
         :id="'card-' + character._id"
         class="card col-6 card m-3 central"
         style="width: 18rem">
+        <div class="icons">
+            <i class="bi bi-pencil"></i>
+            <i class="bi bi-trash"></i>
+
+        </div>
         <div class="img-card">
             <img :src="character.imageUrl" class="card-img-top" alt="..." />
         </div>
@@ -22,7 +27,7 @@ export default {
         <div class="card-body">
             <h3 class="card-text">{{ character.name }}</h3>
         </div>
-        
+
         <div class="stars">HOLA</div> 
     </div>
     </main>
@@ -35,6 +40,12 @@ display: flex;
   margin-top: 1%;
   background: #87cefa;
   justify-content: center;
+}
+
+.icons{
+    display: flex;
+    justify-content: space-between;
+    margin: 5%;
 }
     .central{
     text-align: center;
