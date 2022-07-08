@@ -99,7 +99,7 @@ export default {
 .central {
     text-align: center;
     width: 100%;
-    .img-card {
+.img-card {
         width: 90%;
         height: 60%;
         margin: 0 5% 20px 5%;
