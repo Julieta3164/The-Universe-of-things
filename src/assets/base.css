@@ -1,63 +1,64 @@
 /* color palette from <https://github.com/vuejs/theme> */
-body{
-  margin: 1%;
-  font-family: "WaltographRegular";
-}
-header img{
-  width: 100%;
-}
-nav, footer{
-  margin-top: 1%;
-  background-color: #87cefa;
-  padding: 20px;
+
+body {
+    margin: 1%;
+    font-family: "WaltographRegular";
 }
 
-
-nav{
-  display: flex;
-  text-align: center;
+header img {
+    width: 100%;
 }
 
-nav a{
-display: inline-block;
-font-size: 25px;
-letter-spacing: 2px;
-text-align: center;
-padding: 10px;
-margin: 0 20%;
-min-width: 15%;
-text-decoration: none;
-border-radius: 10px;
-background-color: #b93c3c;
-color: white;
+nav,
+footer {
+    margin-top: 1%;
+    background-color: #87cefa;
+    padding: 20px;
 }
 
-nav a:hover{
-color: white;
-background-color: #a7161d;
-}
-
-footer{
-font-size: 50px;
-text-align: center;
-}
-
-footer img{
-  width: 3%;
-  margin-right: 5%;
-}
-
-
-@media (max-width: 768px){
-  nav{
+nav {
     display: flex;
-  
-  }
-  nav a{
-    font-size: 10px;
+    text-align: center;
+}
+
+nav a {
+    display: inline-block;
+    font-size: 25px;
     letter-spacing: 2px;
+    text-align: center;
+    padding: 10px;
+    margin: 0 20%;
     min-width: 15%;
+    text-decoration: none;
+    border-radius: 10px;
     background-color: #b93c3c;
     color: white;
+}
+
+nav a:hover {
+    color: white;
+    background-color: #a7161d;
+}
+
+footer {
+    font-size: 50px;
+    text-align: center;
+}
+
+footer img {
+    width: 3%;
+    margin-right: 5%;
+}
+
+@media (max-width: 768px) {
+    nav {
+        display: flex;
+    }
+    nav a {
+        font-size: 10px;
+        letter-spacing: 2px;
+        min-width: 15%;
+        background-color: #b93c3c;
+        color: white;
     }
 }

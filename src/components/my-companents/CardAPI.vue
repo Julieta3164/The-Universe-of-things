@@ -36,8 +36,6 @@ export default {
     computed: {
         ...mapWritableState(userFavoriteStore, ['favorite']),
     },
-
-    
     
     methods:{
         ...mapActions(userFavoriteStore, ['addFavorite']),
@@ -89,6 +87,7 @@ export default {
             } else {
                 console.log('error HTTP', response.status)
             }
+            
         },
          
         
@@ -134,8 +133,7 @@ export default {
 
             return { x: elt2Bbox.x - elt1Bbox.x, y: elt2Bbox.y - elt1Bbox.y };
         },  
-    }
-    
+    }   
 }
 </script>
 
@@ -158,10 +156,7 @@ export default {
                 <div class="card-body">
                     <h3 class="card-text">{{ character.name }}</h3>
                 </div>
-            </div>
-
-
-            
+            </div>       
 </template>
 
 <style lang="scss" scoped>

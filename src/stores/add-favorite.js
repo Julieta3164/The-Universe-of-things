@@ -7,6 +7,7 @@ export const userFavoriteStore = defineStore({
     }),
     actions: {
         addFavorite(data) {
+            data.editing = true;
             this.favorite.push(data);
         }
     }
