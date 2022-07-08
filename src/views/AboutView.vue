@@ -58,7 +58,13 @@ export default {
             <div class="img-card">
                 <img :src="character.imageUrl" class="card-img-top" alt="..." />
             </div>
-            <div class="stars"></div>
+            <div class="stars">
+                <i class="bi bi-star"></i>
+                <i class="bi bi-star"></i>
+                <i class="bi bi-star"></i>
+                <i class="bi bi-star"></i>
+                <i class="bi bi-star"></i>
+            </div>
             <div class="card-body">
                 <h3 class="card-text" v-if="character.editing">
                     {{ character.name }}
@@ -114,7 +120,8 @@ export default {
     .stars {
         background: #e74c3c;
         width: 100%;
-        height: 20%;
+        height: 10%;
+        font-size: 30px;
     }
 }
 
