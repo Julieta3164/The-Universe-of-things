@@ -39,6 +39,7 @@ export default {
         v-for="(character, index) in favorite"
         :key="index"
         :id="'card-' + character._id"
+<<<<<<< HEAD
         class="card col-6 card m-3"
         style="width: 18rem"
     >
@@ -48,6 +49,19 @@ export default {
         <button @click="Cancel(character)" v-else>Cancelar</button>
 
         <img :src="character.imageUrl" class="card-img-top" alt="..." />
+=======
+        class="card col-6 card m-3 central"
+        style="width: 18rem">
+        <div class="icons">
+            <i class="bi bi-pencil"></i>
+            <i class="bi bi-trash"></i>
+
+        </div>
+        <div class="img-card">
+            <img :src="character.imageUrl" class="card-img-top" alt="..." />
+        </div>
+        <div class="stars">HOLA</div> 
+>>>>>>> 895b609a7e1700c1c7a0e4b955b304fd9d2c6759
         <div class="card-body">
             <h3 class="card-text" v-if="character.editing" >{{ character.name }}</h3>
             <input type="text" v-model="user" v-else @keyup.enter="modify(character, user)" autofocus/>
@@ -64,23 +78,44 @@ display: flex;
   background: #87cefa;
   justify-content: center;
 }
-    .card-body{
-    h3{
-        font-size: 25px;
-        text-align: center;
-        color: white;
-    }
-    background-color: #006E99;
+
+.icons{
+    display: flex;
+    justify-content: space-between;
+    margin: 5%;
 }
 
-img{
-    width: 70%;
-    height: 70%;
-    margin-top: 10%;
-    margin-left: 15%;
-}
+    .central{
+    text-align: center;
+        width: 100%;
+        .img-card{
+            width: 90%;
+            height: 60%;
+            margin: 0 5% 20px 5%;
+            text-align: center;
+            overflow:hidden;
+            img{
+                display: inline-block;
+                width: auto;
+                height: 100%;
+            }
+            
+        }
+        .card-body{
+            background: #006e99;
+            color: white;
+            width: 100%;
+            height: 20%;
+        }
+        .stars{
+            background: #e74c3c;
+            width: 100%;
+            height: 20%;
+        }
+   }
+
 .name {
-    background-color: 006e99;
+    background-color: #006e99;
 }
 
 .card {

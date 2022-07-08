@@ -144,15 +144,16 @@ export default {
                 v-on:click="this.clickPage(page)" 
                 :class="page.class">{{page.text}}</button>
             </div>            
-
-             <div
+            <div
                 v-for="character in characters"
                 :key="character._id"
                 :id= "'card-' + character._id"
-                class="card col-6 card m-3"
+                class="card col-6 card m-3 central"
                 style="width: 18rem">
                 <div class="heart" name="tarjetaTest" v-on:click="this.like(character)"></div>
+            <div class="img-card">
                 <img :src="character.imageUrl" class="card-img-top" alt="..." />
+            </div>
                 <div class="card-body">
                     <h3 class="card-text">{{ character.name }}</h3>
                 </div>
@@ -161,23 +162,27 @@ export default {
 
 <style lang="scss" scoped>
 
-.card-body{
-    h3{
-        font-size: 25px;
-        text-align: center;
-        color: white;
-    }
-    background-color: #006E99;
-}
-
-img{
-    width: 70%;
-    height: 70%;
-    margin-top: 10%;
-    margin-left: 15%;
-}
-.name {
-    background-color: 006e99;
+    .central{
+    text-align: center;
+        width: 100%;
+        .img-card{
+            height: 80%;
+            margin: 0 5% 20px 5%;
+            text-align: center;
+            overflow: hidden;
+            img{
+                display: inline-block;
+                width: auto;
+                height: 100%;
+            }
+        }
+        .card-body{
+            background: #006e99;
+            color: white;
+            width: 100%;
+            height: 20%;
+        }
+    
 }
 
 .card {
@@ -196,7 +201,6 @@ img{
   }
 }
 
-
 .heart:before,
 .heart:after {
     background: #e74c3c;
@@ -205,7 +209,7 @@ img{
     height: 29px;
     left: 17px;
     position: absolute;
-    top: 6px;
+    top: 10px;
     margin-left: 240px;
     width: 16px;
     -moz-border-radius: 50px 50px 0 0;
@@ -221,6 +225,7 @@ img{
     -o-transform-origin: 0 100%;
     transform-origin: 0 100%;
 }
+
 .heart:after {
     left: 1px;
     -webkit-transform: rotate(45deg);
@@ -235,8 +240,6 @@ img{
     -o-transform-origin: 100% 100%;
     transform-origin: 100% 100%;
     }
-
-
 
 .pag{
         display: flex;
