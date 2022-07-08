@@ -23,12 +23,10 @@ export default {
         <div class="img-card">
             <img :src="character.imageUrl" class="card-img-top" alt="..." />
         </div>
-           
+        <div class="stars">HOLA</div> 
         <div class="card-body">
             <h3 class="card-text">{{ character.name }}</h3>
         </div>
-
-        <div class="stars">HOLA</div> 
     </div>
     </main>
 </template>
@@ -47,17 +45,22 @@ display: flex;
     justify-content: space-between;
     margin: 5%;
 }
+
     .central{
     text-align: center;
         width: 100%;
         .img-card{
+            width: 90%;
+            height: 60%;
+            margin: 0 5% 20px 5%;
+            text-align: center;
+            overflow:hidden;
             img{
-                width: 50%;
+                display: inline-block;
+                width: auto;
                 height: 100%;
             }
-            margin: 5%;
-            width: 100%;
-            height: 60%;
+            
         }
         .card-body{
             background: #006e99;
